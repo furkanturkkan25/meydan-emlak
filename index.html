@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meydan — sitesiz ofislerin ilan yeri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#icerik">İçeriğe geç</a>
+  <header class="nav">
+    <a class="word" href="#ilanlar">Meydan</a>
+    <nav>
+      <a href="#ilanlar">İlanlar</a>
+      <a href="#ofisler">Ofisler</a>
+      <a class="nav-go" href="#ilan-ver">İlan bırak</a>
+    </nav>
+  </header>
+
+  <main id="icerik">
+    <section class="hero" id="bas">
+      <img
+        src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=80"
+        alt="Akşam ışığında apartman cepheleri"
+      >
+      <div class="hero-copy">
+        <p class="brand">Meydan</p>
+        <h1>Sitesi olmayan ofis, ilanını buraya bırakır.</h1>
+        <p class="lede">Pendik, Gebze ve İzmit’teki gayrimenkul ofisleri dairelerini ve kendini bu sayfada anlatır.</p>
+        <p class="cta">
+          <a class="btn" href="#ilan-ver">İlan bırak</a>
+          <a class="textlink" href="#ofisler">Ofisleri gör</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="band" id="ilanlar">
+      <div class="band-head">
+        <h2>Daireler</h2>
+        <p>Ofislerin buraya bıraktığı satılık ve kiralık ilanlar.</p>
+        <div class="filters" role="tablist">
+          <button type="button" data-city="hepsi" class="is-on">Hepsi</button>
+          <button type="button" data-city="İstanbul">İstanbul</button>
+          <button type="button" data-city="Kocaeli">Kocaeli</button>
+        </div>
+      </div>
+      <div id="ilan-list" class="ilan-list"></div>
+    </section>
+
+    <section class="band band-office" id="ofisler">
+      <div class="band-head">
+        <h2>Ofisler</h2>
+        <p>Kendi sitesi olmayan ofisler. Birine girince kendini anlatabilir, ilanlarını görebilirsiniz.</p>
+      </div>
+      <div id="ofis-list" class="ofis-list"></div>
+    </section>
+
+    <section class="band band-form" id="ilan-ver">
+      <div class="band-head">
+        <h2>Daire bırak</h2>
+        <p>Ofisinizi seçin, kısaca kendinizden bahsedin, elinizdeki daireyi yazın.</p>
+      </div>
+      <form id="form" novalidate>
+        <p class="err" id="form-err" hidden></p>
+        <label>
+          Ofis
+          <select name="office" required></select>
+        </label>
+        <label>
+          Kendinizden bahsedin
+          <textarea name="about" rows="4" maxlength="600" placeholder="Hangi mahallede çalışıyorsunuz, ne tür daire bakıyorsunuz."></textarea>
+        </label>
+        <div class="split">
+          <label>
+            İlan başlığı
+            <input name="title" required maxlength="80" placeholder="Kaynarca’da 2+1 ara kat">
+          </label>
+          <label>
+            Durum
+            <select name="kind">
+              <option value="satilik">Satılık</option>
+              <option value="kiralik">Kiralık</option>
+            </select>
+          </label>
+        </div>
+        <div class="split three">
+          <label>
+            Oda
+            <select name="rooms">
+              <option>1+1</option>
+              <option selected>2+1</option>
+              <option>3+1</option>
+              <option>4+1</option>
+              <option>5+1</option>
+            </select>
+          </label>
+          <label>
+            m²
+            <input name="sqm" inputmode="numeric" required placeholder="95">
+          </label>
+          <label>
+            Fiyat (TL)
+            <input name="price" inputmode="numeric" required placeholder="3500000">
+          </label>
+        </div>
+        <label>
+          Mahalle veya semt
+          <input name="place" required maxlength="80" placeholder="Kaynarca">
+        </label>
+        <label>
+          Daire hakkında
+          <textarea name="note" rows="4" maxlength="800" placeholder="Kat, cephe, site, aidat, kiracılı mı."></textarea>
+        </label>
+        <button class="btn" type="submit">Meydana koy</button>
+      </form>
+    </section>
+  </main>
+
+  <div id="sheet" class="sheet" hidden>
+    <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+      <button type="button" class="sheet-x" id="sheet-x">Kapat</button>
+      <div id="sheet-body"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Meydan, kendi sitesi olmayan ofisler için ortak bir ilan yeri. Telefonlar herkese açık harita kayıtlarından.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
